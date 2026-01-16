@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Réalisations - HOPE COMMS</title>
+    <!-- Chargement de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chargement de la police Inter (recommandée) et Lucide Icons pour les icônes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hope-dark': '#0c3a2d',
+                        'hope-green': '#4CAF50',
+                        /* Vert de la charte graphique */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Style pour masquer le défilement horizontal sur mobile */
+        body {
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Animation simple pour le menu mobile */
+        .mobile-menu-open {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar Fixe et Sombre -->
+    <header class="sticky top-0 z-50 bg-[#0c3a2d] shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo HOPE COMMS (simplifié) -->
+            <a href="index.html" class="text-3xl font-extrabold tracking-tight text-white">
+                <span class="text-lime-500">hope</span>comms
+            </a>
+
+            <!-- Navigation Links (Masqués sur mobile, affichés sur desktop) -->
+            <div id="desktop-menu" class="hidden md:flex space-x-8">
+                <a href="index.html"
+                    class="text-white hover:text-lime-500 transition duration-150 font-medium">Accueil</a>
+                <a href="services.html"
+                    class="text-white hover:text-lime-500 transition duration-150 font-medium">Services</a>
+                <a href="realisations.html" class="text-lime-500 font-medium">Nos Réalisations</a>
+                <a href="about.html" class="text-white hover:text-lime-500 transition duration-150 font-medium">À
+                    Propos</a>
+                <a href="contact.html"
+                    class="text-white bg-lime-500 px-4 py-2 rounded-lg hover:bg-lime-400 transition duration-150 shadow-md">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button (Icône SVG pour le hamburger) -->
+            <button id="mobile-menu-button"
+                class="md:hidden text-white p-2 rounded-lg hover:bg-hope-dark/50 transition focus:outline-none"
+                aria-label="Toggle Menu">
+                <!-- Icône Hamburger (Ouverture) -->
+                <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <!-- Icône Croix (Fermeture) - Cachée par défaut -->
+                <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Menu Mobile Déroulant (Caché par défaut) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0c3a2d]/95 backdrop-blur-sm shadow-xl pb-2">
+            <a href="index.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Accueil</a>
+            <a href="services.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Services</a>
+            <a href="realisations.html"
+                class="block px-4 py-3 text-lime-500 bg-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Nos
+                Réalisations</a>
+            <a href="about.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">À
+                Propos</a>
+            <a href="contact.html"
+                class="block px-4 py-3 text-white bg-lime-600 hover:bg-lime-500 font-bold transition duration-150 border-t border-gray-700">Contact</a>
+        </div>
+
+    </header>
+
+    <main>
+        <!-- Section Héro -->
+        <section class="bg-[#0c3a2d] text-white py-20 text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-4xl sm:text-6xl font-extrabold mb-6 tracking-tight">
+                    Nos <span class="text-lime-500">Réalisations</span>
+                </h1>
+                <p class="text-xl max-w-3xl mx-auto font-light mb-10">
+                    Découvrez comment nous avons aidé nos clients à atteindre leurs objectifs.
+                </p>
+            </div>
+        </section>
+
+        <!-- Galerie de Projets -->
+        <section class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Projet 1 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop"
+                            alt="Campagne Digitale Energy Drink" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#0c3a2d] mb-2">Campagne Digitale "Energy Drink"</h3>
+                            <p class="text-gray-600 mb-4">Lancement d'une nouvelle boisson énergisante sur le marché de
+                                Kinshasa avec une stratégie d'influenceurs.</p>
+                            <button onclick="openModal('project1')"
+                                class="text-lime-600 font-semibold hover:text-lime-500 transition">Voir les détails
+                                &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Projet 2 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop"
+                            alt="Branding Institutionnel" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#0c3a2d] mb-2">Branding Institutionnel</h3>
+                            <p class="text-gray-600 mb-4">Refonte complète de l'identité visuelle pour une ONG locale,
+                                incluant logo et charte graphique.</p>
+                            <button onclick="openModal('project2')"
+                                class="text-lime-600 font-semibold hover:text-lime-500 transition">Voir les détails
+                                &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Projet 3 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop"
+                            alt="Événement Tech Contest" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#0c3a2d] mb-2">Événement Tech Contest</h3>
+                            <p class="text-gray-600 mb-4">Organisation et couverture médiatique d'un hackathon
+                                rassemblant 200 développeurs.</p>
+                            <button onclick="openModal('project3')"
+                                class="text-lime-600 font-semibold hover:text-lime-500 transition">Voir les détails
+                                &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Projet 4 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=600&fit=crop"
+                            alt="Lancement Produit Cosmétique" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#0c3a2d] mb-2">Lancement Produit Cosmétique</h3>
+                            <p class="text-gray-600 mb-4">Campagne 360° pour une nouvelle gamme de soins de beauté bio.
+                            </p>
+                            <button onclick="openModal('project4')"
+                                class="text-lime-600 font-semibold hover:text-lime-500 transition">Voir les détails
+                                &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Projet 5 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=600&fit=crop"
+                            alt="Conférence Mining Indaba" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#0c3a2d] mb-2">Conférence Mining Indaba</h3>
+                            <p class="text-gray-600 mb-4">Gestion complète de la communication lors de la conférence
+                                minière annuelle.</p>
+                            <button onclick="openModal('project5')"
+                                class="text-lime-600 font-semibold hover:text-lime-500 transition">Voir les détails
+                                &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Projet 6 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800&h=600&fit=crop"
+                            alt="Campagne Sponsoring Sportif" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#0c3a2d] mb-2">Campagne Sponsoring Sportif</h3>
+                            <p class="text-gray-600 mb-4">Activation de marque lors du championnat national de football.
+                            </p>
+                            <button onclick="openModal('project6')"
+                                class="text-lime-600 font-semibold hover:text-lime-500 transition">Voir les détails
+                                &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Container -->
+        <div id="projectModal"
+            class="hidden fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 backdrop-blur-sm">
+            <div class="flex min-h-screen items-center justify-center p-4">
+                <div class="bg-white rounded-2xl max-w-4xl w-full shadow-2xl transform transition-all">
+                    <!-- Modal Header -->
+                    <div class="bg-[#0c3a2d] text-white px-6 py-4 rounded-t-2xl flex justify-between items-center">
+                        <h2 id="modalTitle" class="text-2xl font-bold"></h2>
+                        <button onclick="closeModal()"
+                            class="text-white hover:text-lime-500 transition text-3xl font-bold">&times;</button>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="p-8 max-h-[70vh] overflow-y-auto">
+                        <div id="modalContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0c3a2d] text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-2xl font-extrabold tracking-tight mb-4">
+                <span class="text-lime-500">hope</span>comms
+            </p>
+            <p class="text-sm text-gray-400">
+                &copy; 2025 HOPE COMMS. Tous droits réservés.
+            </p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <!-- Icône Facebook -->
+                <a href="#" class="text-gray-400 hover:text-lime-500 transition duration-150" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.77l-.44 2.891h-2.33v6.987C18.343 21.128 22 16.991 22 12z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Project data with detailed information
+        const projectData = {
+            project1: {
+                title: 'Campagne Digitale "Energy Drink"',
+                description: 'Lancement stratégique d\'une nouvelle boisson énergisante sur le marché dynamique de Kinshasa, en capitalisant sur l\'influence des créateurs de contenu locaux.',
+                objectives: [
+                    'Générer une notoriété de marque à 360°',
+                    'Atteindre 500 000 impressions en 3 mois',
+                    'Créer un buzz viral auprès des 18-35 ans',
+                    'Établir une présence forte sur les réseaux sociaux'
+                ],
+                solutions: [
+                    'Collaboration avec 15 influenceurs majeurs de Kinshasa',
+                    'Création de contenu vidéo viral et challenges TikTok',
+                    'Événements de lancement dans 5 lieux stratégiques',
+                    'Campagne publicitaire ciblée sur Facebook et Instagram'
+                ],
+                results: [
+                    '750 000+ impressions organiques',
+                    '+120% de croissance des ventes en 2 mois',
+                    '25 000 nouveaux abonnés sur les réseaux sociaux',
+                    'Taux d\'engagement de 8,5% (vs moyenne de 3%)'
+                ],
+                channels: ['Instagram', 'TikTok', 'Facebook', 'YouTube', 'Relations Presse']
+            },
+            project2: {
+                title: 'Branding Institutionnel',
+                description: 'Transformation complète de l\'identité visuelle d\'une ONG locale œuvrant pour le développement communautaire, visant à moderniser son image et renforcer sa crédibilité.',
+                objectives: [
+                    'Moderniser l\'image de marque de l\'ONG',
+                    'Créer une identité visuelle cohérente et mémorable',
+                    'Faciliter la reconnaissance institutionnelle',
+                    'Améliorer la perception auprès des bailleurs de fonds'
+                ],
+                solutions: [
+                    'Refonte complète du logo avec symbolique locale',
+                    'Création d\'une charte graphique détaillée (80 pages)',
+                    'Design de supports de communication (brochures, rapports)',
+                    'Formation de l\'équipe interne aux nouvelles normes visuelles'
+                ],
+                results: [
+                    'Identité visuelle cohérente déployée sur tous les supports',
+                    '+40% d\'augmentation des demandes de partenariat',
+                    'Reconnaissance de marque accrue auprès des stakeholders',
+                    'Prix du meilleur rebranding institutionnel 2024'
+                ],
+                channels: ['Design Graphique', 'Print', 'Digital', 'Formation Interne']
+            },
+            project3: {
+                title: 'Événement Tech Contest',
+                description: 'Organisation et couverture médiatique complète du plus grand hackathon technologique de Kinshasa, rassemblant 200 développeurs pendant 48 heures de compétition intense.',
+                objectives: [
+                    'Positionner Kinshasa comme hub tech en Afrique centrale',
+                    'Créer un événement de référence pour la communauté tech',
+                    'Générer une couverture médiatique nationale et internationale',
+                    'Faciliter le réseautage entre développeurs et investisseurs'
+                ],
+                solutions: [
+                    'Gestion complète de l\'événement (logistique, sponsors, jury)',
+                    'Stratégie de communication multi-canaux',
+                    'Couverture média en direct (livestream, réseaux sociaux)',
+                    'Relations presse avec médias tech internationaux',
+                    'Production de contenu vidéo professionnel'
+                ],
+                results: [
+                    '200 participants de 8 pays africains',
+                    '1,2M+ de vues sur les réseaux sociaux',
+                    'Couverture dans 15 médias nationaux et internationaux',
+                    '45 prototypes développés, 12 startups créées',
+                    '500 000$ levés par les équipes gagnantes'
+                ],
+                channels: ['Événementiel', 'Livestreaming', 'Relations Presse', 'Social Media', 'Vidéo Production']
+            },
+            project4: {
+                title: 'Lancement Produit Cosmétique',
+                description: 'Campagne de communication 360° pour le lancement d\'une nouvelle gamme de produits cosmétiques bio, ciblant les consommatrices urbaines soucieuses de l\'environnement.',
+                objectives: [
+                    'Établir la marque sur le segment premium bio',
+                    'Acquérir 5 000 clientes lors du premier trimestre',
+                    'Créer une communauté engagée autour des valeurs éco-responsables',
+                    'Générer des ventes de 50 000$ au T1'
+                ],
+                solutions: [
+                    'Stratégie de contenu axée sur l\'éducation et l\'authenticité',
+                    'Partenariats avec influenceuses beauté naturelle',
+                    'Campagne publicitaire digitale ciblée',
+                    'Événements pop-up dans boutiques concept stores',
+                    'Programme de fidélité et ambassadrices de marque'
+                ],
+                results: [
+                    '7 800 nouvelles clientes (156% de l\'objectif)',
+                    '85 000$ de CA au T1 (+70% vs objectif)',
+                    'Communauté de 18 000 abonnées engagées',
+                    'Taux de réachat de 42% après 2 mois',
+                    'Note moyenne produit: 4,7/5 (850 avis)'
+                ],
+                channels: ['Instagram', 'Facebook Ads', 'Événementiel', 'Influenceurs', 'E-commerce']
+            },
+            project5: {
+                title: 'Conférence Mining Indaba',
+                description: 'Gestion complète de la stratégie de communication pour la plus importante conférence minière annuelle de la RDC, accueillant 1 200 professionnels du secteur.',
+                objectives: [
+                    'Maximiser la visibilité de l\'événement auprès des acteurs miniers',
+                    'Attirer des investisseurs internationaux',
+                    'Positionner la RDC comme destination minière d\'avenir',
+                    'Faciliter les échanges B2B entre participants'
+                ],
+                solutions: [
+                    'Stratégie de communication institutionnelle multicanale',
+                    'Relations presse internationales (Bloomberg, Reuters, Mining.com)',
+                    'Gestion des réseaux sociaux et live-tweeting',
+                    'Production de contenus vidéo (interviews, résumés journaliers)',
+                    'Coordination avec 25 sponsors et partenaires média'
+                ],
+                results: [
+                    '1 200 participants de 35 pays',
+                    '45 articles dans médias internationaux spécialisés',
+                    '150+ contrats et MoU signés durant l\'événement',
+                    '3,5M$ de valeur média équivalente',
+                    'Satisfaction participants: 92%'
+                ],
+                channels: ['Relations Presse', 'Social Media B2B', 'Vidéo', 'Événementiel', 'Communications Institutionnelles']
+            },
+            project6: {
+                title: 'Campagne Sponsoring Sportif',
+                description: 'Activation de marque lors du championnat national de football, transformant la passion sportive en engagement consommateur pour une marque de télécommunications.',
+                objectives: [
+                    'Augmenter la notoriété de la marque de 25%',
+                    'Générer 100 000 interactions avec les fans',
+                    'Créer une association forte entre la marque et le football',
+                    'Convertir l\'engagement en nouveaux abonnés'
+                ],
+                solutions: [
+                    'Activation terrain dans 8 stades majeurs',
+                    'Concours et jeux-concours pour les supporters',
+                    'Campagne sociale #MonEquipeMonRéseau',
+                    'Partenariat avec légendes du football congolais',
+                    'Distribution de goodies et offres exclusives'
+                ],
+                results: [
+                    '180 000+ interactions sur les réseaux sociaux',
+                    '+32% de notoriété assistée de la marque',
+                    '25 000 nouveaux abonnés directs',
+                    '500 000 impressions organiques',
+                    'ROI de 340% sur l\'investissement sponsoring'
+                ],
+                channels: ['Sponsoring Sportif', 'Activation Terrain', 'Social Media', 'Partenariats Influenceurs', 'Promotions']
+            }
+        };
+
+        // Toggle mobile menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+
+            function toggleMenu() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('mobile-menu-open');
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+            }
+
+            mobileMenuButton.addEventListener('click', toggleMenu);
+        });
+
+        // Modal functions
+        function openModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            const project = projectData[projectId];
+
+            if (!project) return;
+
+            // Set modal title
+            modalTitle.textContent = project.title;
+
+            // Build modal content
+            let contentHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-gray-700 text-lg leading-relaxed">${project.description}</p>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Objectifs
+                        </h3>
+                        <ul class="space-y-2">
+                            ${project.objectives.map(obj => `
+                                <li class="flex items-start">
+                                    <span class="text-lime-500 mr-2 mt-1">✓</span>
+                                    <span class="text-gray-700">${obj}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                            Solutions Mises en Œuvre
+                        </h3>
+                        <ul class="space-y-2">
+                            ${project.solutions.map(sol => `
+                                <li class="flex items-start">
+                                    <span class="text-lime-500 mr-2">→</span>
+                                    <span class="text-gray-700">${sol}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
+                            Résultats Obtenus
+                        </h3>
+                        <ul class="space-y-2">
+                            ${project.results.map(res => `
+                                <li class="flex items-start bg-lime-50 p-3 rounded-lg">
+                                    <span class="text-lime-600 mr-2 font-bold">★</span>
+                                    <span class="text-gray-800 font-medium">${res}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-4">Canaux & Technologies</h3>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.channels.map(channel => `
+                                <span class="bg-[#0c3a2d] text-white px-4 py-2 rounded-full text-sm font-medium">
+                                    ${channel}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-6 text-center">
+                        <a href="contact.html" class="inline-block bg-lime-500 text-[#0c3a2d] px-8 py-3 rounded-lg font-bold hover:bg-lime-400 transition shadow-lg">
+                            Discutons de votre projet
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            modalContent.innerHTML = contentHTML;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('projectModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+    <script src="js/unregister-sw.js"></script>
+    <script src="js/chatbot.js?v=3.0"></script>
+</body>
+
+</html>

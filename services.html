@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services - HOPE COMMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hope-dark': '#0c3a2d',
+                        'hope-green': '#4CAF50',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(12, 58, 45, 0.1), 0 4px 6px -2px rgba(12, 58, 45, 0.05);
+        }
+
+        .mobile-menu-open {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 bg-[#0c3a2d] shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold tracking-tight text-white"><span
+                    class="text-lime-500">hope</span>comms</a>
+            <div id="desktop-menu" class="hidden md:flex space-x-8">
+                <a href="index.html"
+                    class="text-white hover:text-lime-500 transition duration-150 font-medium">Accueil</a>
+                <a href="services.html" class="text-lime-500 font-medium">Services</a>
+                <a href="realisations.html"
+                    class="text-white hover:text-lime-500 transition duration-150 font-medium">Nos Réalisations</a>
+                <a href="about.html" class="text-white hover:text-lime-500 transition duration-150 font-medium">À
+                    Propos</a>
+                <a href="contact.html"
+                    class="text-white bg-lime-500 px-4 py-2 rounded-lg hover:bg-lime-400 transition duration-150 shadow-md">Contact</a>
+            </div>
+            <button id="mobile-menu-button"
+                class="md:hidden text-white p-2 rounded-lg hover:bg-hope-dark/50 transition focus:outline-none">
+                <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0c3a2d]/95 backdrop-blur-sm shadow-xl pb-2">
+            <a href="index.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Accueil</a>
+            <a href="services.html"
+                class="block px-4 py-3 text-lime-500 bg-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Services</a>
+            <a href="realisations.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Nos
+                Réalisations</a>
+            <a href="about.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">À
+                Propos</a>
+            <a href="contact.html"
+                class="block px-4 py-3 text-white bg-lime-600 hover:bg-lime-500 font-bold transition duration-150 border-t border-gray-700">Contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Page Header -->
+        <section class="bg-[#0c3a2d] py-20 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-lime-500 opacity-10 blur-3xl">
+            </div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-lime-500 opacity-5 blur-3xl">
+            </div>
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white">Nos Services</h1>
+                <div class="w-20 h-1 bg-lime-500 mx-auto mt-6 rounded-full"></div>
+            </div>
+        </section>
+
+        <section id="services" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-lime-500 font-semibold uppercase tracking-wider">Ce que Nous Faisons</span>
+                <h2 class="text-4xl font-extrabold text-[#0c3a2d] mt-2 mb-12">Nos Services de Communication Clés</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card p-6 bg-white rounded-xl shadow-md border-t-4 border-lime-500 text-left">
+                        <div class="text-lime-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="M12 12l-3-3m3 3l3-3m-3 3v3"></path>
+                            </svg></div>
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-3">Publicité 360°</h3>
+                        <p class="text-gray-600">Publicité Institutionnelle, de Marque, de Produits et de Services. Nous
+                            construisons une identité forte et engageons votre public avec des messages authentiques.
+                        </p>
+                    </div>
+                    <div class="service-card p-6 bg-white rounded-xl shadow-md border-t-4 border-lime-500 text-left">
+                        <div class="text-lime-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            </svg></div>
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-3">Marketing Digital</h3>
+                        <p class="text-gray-600">Utilisation d'outils puissants pour créer une vraie communauté autour
+                            de votre entreprise et être en interaction constante avec elle.</p>
+                    </div>
+                    <div class="service-card p-6 bg-white rounded-xl shadow-md border-t-4 border-lime-500 text-left">
+                        <div class="text-lime-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg></div>
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-3">Événementiel & Média</h3>
+                        <p class="text-gray-600">Organisation de panels, expositions, conférences pour des échanges
+                            directs. Rédaction de magazines internes et newsletters pour l'engagement à long terme.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Ce Que Nous Offrons (Detailed Services) -->
+        <section class="py-16 sm:py-24 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Ce Que Nous Offrons</span>
+                    <h2 class="text-4xl font-extrabold text-[#0c3a2d] mt-2 uppercase">Nos Services</h2>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Service 1 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
+                                1
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-lg font-bold text-[#0c3a2d]">Publicité Institutionnelle</h3>
+                            <p class="mt-2 text-gray-600">Renforcez votre image et votre réputation avec des campagnes
+                                sur mesure qui reflètent vos valeurs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
+                                2
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-lg font-bold text-[#0c3a2d]">Publicité de Marque</h3>
+                            <p class="mt-2 text-gray-600">Construisez une identité forte pour votre marque et engagez
+                                votre public à travers des messages authentiques.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
+                                3
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-lg font-bold text-[#0c3a2d]">Publicité de Produits</h3>
+                            <p class="mt-2 text-gray-600">Mettez en avant vos produits avec des campagnes innovantes qui
+                                captivent l'attention.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
+                                4
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-lg font-bold text-[#0c3a2d]">Publicité de Services</h3>
+                            <p class="mt-2 text-gray-600">Valorisez vos services grâce à une communication claire et
+                                impactante.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 5 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
+                                5
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-lg font-bold text-[#0c3a2d]">Marketing Digital</h3>
+                            <p class="mt-2 text-gray-600">Nous utilisons des outils très puissants pour créer une vraie
+                                communauté pour l'entreprise et être en interaction constante avec elle.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 6 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
+                                6
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-lg font-bold text-[#0c3a2d]">Organisation Panel, Exposition et Conférence
+                            </h3>
+                            <p class="mt-2 text-gray-600">Nous organisons le moyen le plus direct pour échanger et
+                                partager des idées.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 7 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
+                                7
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-lg font-bold text-[#0c3a2d]">Rédaction et Publication Magazine Interne</h3>
+                            <p class="mt-2 text-gray-600">Nous produisons un magazine interne en format flyers pour
+                                rentrer plus en profondeur sur les enjeux de l'entreprise en fonction de l'actualité.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Service 8 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
+                                8
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-lg font-bold text-[#0c3a2d]">Newsletter</h3>
+                            <p class="mt-2 text-gray-600">Rédaction de newsletter qui met en œuvre et permet d'engager
+                                ses destinataires sur la vision à long terme.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#0c3a2d] text-white py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-2xl font-extrabold tracking-tight mb-4"><span class="text-lime-500">hope</span>comms</p>
+            <p class="text-sm text-gray-400">&copy; 2025 HOPE COMMS. Tous droits réservés.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-lime-500 transition duration-150"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.77l-.44 2.891h-2.33v6.987C18.343 21.128 22 16.991 22 12z">
+                        </path>
+                    </svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+            function toggleMenu() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('mobile-menu-open');
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+            }
+            mobileMenuButton.addEventListener('click', toggleMenu);
+        });
+    </script>
+    <script src="js/unregister-sw.js"></script>
+    <script src="js/chatbot.js?v=3.0"></script>
+</body>
+
+</html>

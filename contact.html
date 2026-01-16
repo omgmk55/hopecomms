@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-Nous - HOPE COMMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hope-dark': '#0c3a2d',
+                        'hope-green': '#4CAF50',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .mobile-menu-open {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #confirmation-message {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 bg-[#0c3a2d] shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold tracking-tight text-white"><span
+                    class="text-lime-500">hope</span>comms</a>
+            <div id="desktop-menu" class="hidden md:flex space-x-8">
+                <a href="index.html"
+                    class="text-white hover:text-lime-500 transition duration-150 font-medium">Accueil</a>
+                <a href="services.html"
+                    class="text-white hover:text-lime-500 transition duration-150 font-medium">Services</a>
+                <a href="realisations.html"
+                    class="text-white hover:text-lime-500 transition duration-150 font-medium">Nos Réalisations</a>
+                <a href="about.html" class="text-white hover:text-lime-500 transition duration-150 font-medium">À
+                    Propos</a>
+                <a href="contact.html"
+                    class="text-lime-500 bg-lime-500/10 px-4 py-2 rounded-lg font-bold transition duration-150 shadow-md ring-2 ring-lime-500">Contact</a>
+            </div>
+            <button id="mobile-menu-button"
+                class="md:hidden text-white p-2 rounded-lg hover:bg-hope-dark/50 transition focus:outline-none">
+                <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0c3a2d]/95 backdrop-blur-sm shadow-xl pb-2">
+            <a href="index.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Accueil</a>
+            <a href="services.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Services</a>
+            <a href="realisations.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Nos
+                Réalisations</a>
+            <a href="about.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">À
+                Propos</a>
+            <a href="contact.html"
+                class="block px-4 py-3 text-lime-500 bg-[#0c3a2d]/50 font-bold transition duration-150 border-t border-gray-700">Contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Page Header -->
+        <section class="bg-[#0c3a2d] py-20 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-lime-500 opacity-10 blur-3xl">
+            </div>
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white">Contact</h1>
+                <div class="w-20 h-1 bg-lime-500 mx-auto mt-6 rounded-full"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Contactez-Nous</span>
+                    <h2 class="text-4xl font-extrabold text-[#0c3a2d] mt-2">Prêt à Commencer Votre Prochain Projet?</h2>
+                    <p class="text-xl text-gray-600 mt-4 max-w-3xl mx-auto">Remplissez le formulaire ou utilisez les
+                        coordonnées ci-dessous pour discuter de vos objectifs.</p>
+                </div>
+                <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-2xl mb-12 lg:mb-0 border-t-4 border-lime-500">
+                        <h3 class="text-2xl font-bold text-[#0c3a2d] mb-6">Envoyez-nous un Message</h3>
+                        <div id="confirmation-message"
+                            class="bg-lime-100 border-l-4 border-lime-500 text-lime-700 p-4 mb-4 hidden opacity-0"
+                            role="alert">
+                            <p class="font-bold">Message Envoyé!</p>
+                            <p>Merci pour votre message. Nous vous recontacterons très bientôt.</p>
+                        </div>
+                        <form id="contact-form" action="#" method="POST">
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="nom" class="block text-sm font-medium text-gray-700">Nom Complet</label>
+                                    <input type="text" name="nom" id="nom" required
+                                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-lime-500 focus:border-lime-500">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Email
+                                        Professionnel</label>
+                                    <input type="email" name="email" id="email" required
+                                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-lime-500 focus:border-lime-500">
+                                </div>
+                                <div>
+                                    <label for="sujet" class="block text-sm font-medium text-gray-700">Sujet</label>
+                                    <input type="text" name="sujet" id="sujet" required
+                                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-lime-500 focus:border-lime-500">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-700">Votre
+                                        Message</label>
+                                    <textarea id="message" name="message" rows="4" required
+                                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-lime-500 focus:border-lime-500"></textarea>
+                                </div>
+                                <div class="pt-2">
+                                    <button type="submit"
+                                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-lg font-bold text-[#0c3a2d] bg-lime-500 hover:bg-lime-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 transition duration-150">Envoyer
+                                        le Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#0c3a2d] mb-6">Nos Coordonnées</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="#0c3a2d" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6 flex-shrink-0 mt-1">
+                                    <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <div>
+                                    <p class="font-bold text-lg text-[#0c3a2d]">Adresse du Bureau</p>
+                                    <p class="text-gray-600">Kinshasa, R.D. Congo (Adresse détaillée sur demande)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="#0c3a2d" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6 flex-shrink-0 mt-1">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-3l4-2 4 2 4-2 4 2z"></path>
+                                    <path d="M15 2H9l-4 2 4 2 4-2 4 2z"></path>
+                                </svg>
+                                <div>
+                                    <p class="font-bold text-lg text-[#0c3a2d]">Téléphone</p>
+                                    <a href="tel:+243822032633"
+                                        class="text-gray-600 hover:text-lime-500 transition duration-150 block">+243 822
+                                        032 633</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="#0c3a2d" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6 flex-shrink-0 mt-1">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <div>
+                                    <p class="font-bold text-lg text-[#0c3a2d]">Email</p>
+                                    <a href="mailto:www.HopeCOMMS8@gmail.com"
+                                        class="text-gray-600 hover:text-lime-500 transition duration-150 block">www.HopeCOMMS8@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <h3 class="text-2xl font-bold text-[#0c3a2d] mb-4">Où nous trouver</h3>
+                            <div
+                                class="bg-gray-200 h-64 rounded-xl flex items-center justify-center shadow-lg border border-gray-300">
+                                <p class="text-gray-500 font-medium">Carte de Localisation (Placeholder)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#0c3a2d] text-white py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-2xl font-extrabold tracking-tight mb-4"><span class="text-lime-500">hope</span>comms</p>
+            <p class="text-sm text-gray-400">&copy; 2025 HOPE COMMS. Tous droits réservés.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-lime-500 transition duration-150"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.77l-.44 2.891h-2.33v6.987C18.343 21.128 22 16.991 22 12z">
+                        </path>
+                    </svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+            const contactForm = document.getElementById('contact-form');
+            const confirmationMessage = document.getElementById('confirmation-message');
+
+            function toggleMenu() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('mobile-menu-open');
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+            }
+            mobileMenuButton.addEventListener('click', toggleMenu);
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    contactForm.classList.add('hidden');
+                    confirmationMessage.classList.remove('hidden');
+                    setTimeout(() => { confirmationMessage.classList.remove('opacity-0'); }, 10);
+                });
+            }
+        });
+    </script>
+    <script src="js/unregister-sw.js"></script>
+    <script src="js/chatbot.js?v=3.0"></script>
+</body>
+
+</html>
