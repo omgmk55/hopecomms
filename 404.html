@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOPE COMMS - Votre agence de communication en RDC</title>
+    <!-- Chargement de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chargement de la police Inter (recommandée) et Lucide Icons pour les icônes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hope-dark': '#0c3a2d',
+                        'hope-green': '#4CAF50',
+                        /* Vert de la charte graphique */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Style pour masquer le défilement horizontal sur mobile */
+        body {
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Style pour les cartes de service */
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(12, 58, 45, 0.1), 0 4px 6px -2px rgba(12, 58, 45, 0.05);
+        }
+
+        /* Animation simple pour le menu mobile */
+        .mobile-menu-open {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Style pour le message de confirmation (initialement masqué) */
+        #confirmation-message {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Custom Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            /* Star hidden */
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        /* Animation de défilement pour les partenaires */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-scroll {
+            animation: scroll 20s linear infinite;
+        }
+
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar Fixe et Sombre -->
+    <header class="sticky top-0 z-50 bg-[#0c3a2d] shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo HOPE COMMS (simplifié) -->
+            <a href="index.html" class="text-3xl font-extrabold tracking-tight text-white">
+                <span class="text-lime-500">hope</span>comms
+            </a>
+
+            <!-- Navigation Links (Masqués sur mobile, affichés sur desktop) -->
+            <div id="desktop-menu" class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-lime-500 font-medium">Accueil</a>
+                <a href="services.html"
+                    class="text-white hover:text-lime-500 transition duration-150 font-medium">Services</a>
+                <a href="realisations.html"
+                    class="text-white hover:text-lime-500 transition duration-150 font-medium">Nos Réalisations</a>
+                <a href="about.html" class="text-white hover:text-lime-500 transition duration-150 font-medium">À
+                    Propos</a>
+                <a href="contact.html"
+                    class="text-white bg-lime-500 px-4 py-2 rounded-lg hover:bg-lime-400 transition duration-150 shadow-md">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button (Icône SVG pour le hamburger) -->
+            <button id="mobile-menu-button"
+                class="md:hidden text-white p-2 rounded-lg hover:bg-hope-dark/50 transition focus:outline-none"
+                aria-label="Toggle Menu">
+                <!-- Icône Hamburger (Ouverture) -->
+                <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <!-- Icône Croix (Fermeture) - Cachée par défaut -->
+                <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Menu Mobile Déroulant (Caché par défaut) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0c3a2d]/95 backdrop-blur-sm shadow-xl pb-2">
+            <a href="index.html"
+                class="block px-4 py-3 text-lime-500 bg-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Accueil</a>
+            <a href="services.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Services</a>
+            <a href="realisations.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">Nos
+                Réalisations</a>
+            <a href="about.html"
+                class="block px-4 py-3 text-white hover:bg-lime-500 hover:text-[#0c3a2d] font-medium transition duration-150 border-t border-gray-700">À
+                Propos</a>
+            <a href="contact.html"
+                class="block px-4 py-3 text-white bg-lime-600 hover:bg-lime-500 font-bold transition duration-150 border-t border-gray-700">Contact</a>
+        </div>
+
+    </header>
+
+    <main>
+        <!-- Section Héro / Bannière Principale -->
+        <section id="hero" class="bg-[#0c3a2d] text-white py-20 sm:py-32 flex items-center min-h-[70vh]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight">
+                    Votre <span class="text-lime-500">histoire</span>, notre expertise
+                </h1>
+                <p class="text-xl sm:text-2xl mb-10 max-w-3xl mx-auto font-light">
+                    Ensemble, marquons les esprits en transformant vos idées en campagnes percutantes.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="services.html"
+                        class="bg-lime-500 text-[#0c3a2d] font-bold py-3 px-8 rounded-xl text-lg hover:bg-lime-400 transition duration-300 shadow-xl">
+                        Découvrir nos Services
+                    </a>
+                    <a href="contact.html"
+                        class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-xl text-lg hover:bg-white hover:text-[#0c3a2d] transition duration-300">
+                        Parler à un Expert
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section À Propos (Nouveau Design Bannière) -->
+        <section id="about" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Banner Container (Seamless Design) -->
+                <div
+                    class="bg-[#0c3a2d] rounded-3xl overflow-hidden shadow-2xl relative min-h-[500px] flex items-center">
+
+                    <!-- Background Curve SVG -->
+                    <div class="absolute top-0 right-0 h-full w-2/3 hidden lg:block pointer-events-none">
+                        <svg viewBox="0 0 100 100" preserveAspectRatio="none"
+                            class="h-full w-full text-[#115e45] opacity-50">
+                            <path d="M0 0 C 30 10 30 100 100 100 V 0 Z" fill="currentColor" />
+                        </svg>
+                    </div>
+
+                    <div class="lg:grid lg:grid-cols-2 w-full relative z-10">
+                        <!-- Left: Text Content -->
+                        <div class="p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+                            <h2
+                                class="text-5xl sm:text-6xl font-extrabold text-white leading-tight mb-2 animate-fade-in-up delay-100">
+                                HOPE <br /> COMMS
+                            </h2>
+                            <span
+                                class="text-lime-500 font-bold uppercase tracking-wider text-xl mb-6 block animate-fade-in-up delay-200">Qui
+                                Sommes-Nous ?</span>
+
+                            <p
+                                class="text-lg text-gray-200 mb-6 font-light leading-relaxed max-w-md animate-fade-in-up delay-300">
+                                Située au cœur de la République Démocratique du Congo, notre agence est dédiée à
+                                l'accompagnement des entreprises et institutions dans leur stratégie de communication.
+                            </p>
+                            <p class="text-lg text-gray-200 font-medium leading-relaxed max-w-md animate-fade-in-up delay-300"
+                                style="animation-delay: 0.4s;">
+                                Nous transformons vos idées en campagnes percutantes car <span
+                                    class="text-lime-500 font-bold">votre réputation se soigne et s'entretient.</span>
+                            </p>
+                        </div>
+
+                        <!-- Right: Image (Seamless Blend) -->
+                        <div
+                            class="relative h-full min-h-[500px] flex items-end justify-center lg:justify-end overflow-visible">
+                            <!-- Image sitting on the card background -->
+                            <img src="images/team_bg_removed.png"
+                                class="relative z-10 max-h-[110%] w-auto object-contain object-bottom lg:-mr-12 lg:-mb-12 animate-float"
+                                alt="Équipe Hope Comms">
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Section Chiffres Clés -->
+        <section id="stats" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Notre Impact</span>
+                    <h2 class="text-4xl font-extrabold text-[#0c3a2d] mt-2">
+                        Chiffres Clés
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <!-- Stat 1 -->
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                        <div class="text-5xl font-extrabold text-lime-500 mb-2">+50</div>
+                        <p class="text-gray-600 font-medium">Clients Satisfaits</p>
+                    </div>
+                    <!-- Stat 2 -->
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                        <div class="text-5xl font-extrabold text-lime-500 mb-2">+100</div>
+                        <p class="text-gray-600 font-medium">Projets Réalisés</p>
+                    </div>
+                    <!-- Stat 3 -->
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                        <div class="text-5xl font-extrabold text-lime-500 mb-2">15+</div>
+                        <p class="text-gray-600 font-medium">Années d'Expérience</p>
+                    </div>
+                    <!-- Stat 4 -->
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                        <div class="text-5xl font-extrabold text-lime-500 mb-2">99%</div>
+                        <p class="text-gray-600 font-medium">Taux de Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Services -->
+        <section id="services" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-lime-500 font-semibold uppercase tracking-wider">Ce que Nous Faisons</span>
+                <h2 class="text-4xl font-extrabold text-[#0c3a2d] mt-2 mb-12">
+                    Nos Services de Communication Clés
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Carte 1: Publicité & Stratégie -->
+                    <div class="service-card p-6 bg-white rounded-xl shadow-md border-t-4 border-lime-500 text-left">
+                        <div class="text-lime-500 mb-4">
+                            <!-- Icône Shield -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-8 h-8">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="M12 12l-3-3m3 3l3-3m-3 3v3"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-3">Publicité 360°</h3>
+                        <p class="text-gray-600">
+                            Publicité Institutionnelle, de Marque, de Produits et de Services. Nous construisons une
+                            identité forte et engageons votre public avec des messages authentiques.
+                        </p>
+                    </div>
+
+                    <!-- Carte 2: Marketing Digital -->
+                    <div class="service-card p-6 bg-white rounded-xl shadow-md border-t-4 border-lime-500 text-left">
+                        <div class="text-lime-500 mb-4">
+                            <!-- Icône Link/Digital -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-8 h-8">
+                                <path d="M10 13 a5 5 0 0 0 7.54 0.54 l3 -3 a5 5 0 0 0 -7.07 -7.07 l-1.72 1.71"></path>
+                                <path d="M14 11 a5 5 0 0 0 -7.54 -0.54 l-3 3 a5 5 0 0 0 7.07 7.07 l1.71 -1.71"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-3">Marketing Digital</h3>
+                        <p class="text-gray-600">
+                            Utilisation d'outils puissants pour créer une vraie communauté autour de votre entreprise et
+                            être en interaction constante avec elle.
+                        </p>
+                    </div>
+
+                    <!-- Carte 3: Événementiel & Contenu -->
+                    <div class="service-card p-6 bg-white rounded-xl shadow-md border-t-4 border-lime-500 text-left">
+                        <div class="text-lime-500 mb-4">
+                            <!-- Icône Calendar -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-8 h-8">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-3">Événementiel & Média</h3>
+                        <p class="text-gray-600">
+                            Organisation de panels, expositions, conférences pour des échanges directs. Rédaction de
+                            magazines internes et newsletters pour l'engagement à long terme.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Nos Réalisations (Preview) -->
+        <section id="realisations-preview" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Nos Travaux</span>
+                    <h2 class="text-4xl font-extrabold text-[#0c3a2d] mt-2">
+                        Nos Réalisations
+                    </h2>
+                    <p class="text-xl text-gray-600 mt-4 max-w-3xl mx-auto">
+                        Découvrez comment nous avons aidé nos clients à atteindre leurs objectifs.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Projet 1 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop"
+                            alt="Campagne Digitale Energy Drink" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#0c3a2d] mb-2">Campagne Digitale "Energy Drink"</h3>
+                            <p class="text-gray-600 mb-4">Lancement d'une nouvelle boisson énergisante sur le marché de
+                                Kinshasa avec une stratégie d'influenceurs.</p>
+                            <button onclick="openModal('project1')"
+                                class="text-lime-600 font-semibold hover:text-lime-500 transition">Voir les détails
+                                &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Projet 2 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop"
+                            alt="Branding Institutionnel" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#0c3a2d] mb-2">Branding Institutionnel</h3>
+                            <p class="text-gray-600 mb-4">Refonte complète de l'identité visuelle pour une ONG locale,
+                                incluant logo et charte graphique.</p>
+                            <button onclick="openModal('project2')"
+                                class="text-lime-600 font-semibold hover:text-lime-500 transition">Voir les détails
+                                &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Projet 3 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop"
+                            alt="Événement Tech Contest" class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#0c3a2d] mb-2">Événement Tech Contest</h3>
+                            <p class="text-gray-600 mb-4">Organisation et couverture médiatique d'un hackathon
+                                rassemblant 200 développeurs.</p>
+                            <button onclick="openModal('project3')"
+                                class="text-lime-600 font-semibold hover:text-lime-500 transition">Voir les détails
+                                &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="realisations.html"
+                        class="inline-block bg-lime-500 text-[#0c3a2d] font-bold py-3 px-8 rounded-xl text-lg hover:bg-lime-400 transition duration-300 shadow-xl">
+                        Voir toutes nos réalisations
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Témoignages -->
+        <section id="testimonials" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Témoignages</span>
+                    <h2 class="text-4xl font-extrabold text-[#0c3a2d] mt-2">
+                        Ce que disent nos clients
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-lime-500">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="w-12 h-12 bg-lime-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                P</div>
+                            <div class="ml-4">
+                                <h4 class="font-bold text-[#0c3a2d]">Patrick Lumbu</h4>
+                                <p class="text-gray-500 text-sm">CEO, TechCorp RDC</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"Hope Comms a transformé notre présence digitale. Leur
+                            créativité et leur professionnalisme sont exceptionnels. Je recommande vivement!"</p>
+                        <div class="flex mt-4 text-lime-500">★★★★★</div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-lime-500">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="w-12 h-12 bg-lime-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                M</div>
+                            <div class="ml-4">
+                                <h4 class="font-bold text-[#0c3a2d]">Marie Kasongo</h4>
+                                <p class="text-gray-500 text-sm">Directrice, ONG Espoir</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"Grâce à Hope Comms, notre ONG a gagné en visibilité et en
+                            crédibilité. Leur équipe comprend vraiment les enjeux locaux."</p>
+                        <div class="flex mt-4 text-lime-500">★★★★★</div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-lime-500">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="w-12 h-12 bg-lime-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                J</div>
+                            <div class="ml-4">
+                                <h4 class="font-bold text-[#0c3a2d]">Joseph Mbala</h4>
+                                <p class="text-gray-500 text-sm">Fondateur, StartupKin</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"Le lancement de notre marque a été un succès total grâce à la
+                            stratégie de Hope Comms. Des résultats au-delà de nos attentes!"</p>
+                        <div class="flex mt-4 text-lime-500">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Valeur Ajoutée / Pourquoi Nous Choisir? -->
+        <section id="why-us" class="py-16 sm:py-24 bg-[#0c3a2d] text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Notre Avantage
+                        Concurrentiel</span>
+                    <h2 class="text-4xl font-extrabold mt-2 mb-10">
+                        La Clé de la Réussite : La Communication
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+                    <!-- Avantage 1: Expertise Locale -->
+                    <div class="text-center p-6 bg-white bg-opacity-10 rounded-xl shadow-lg">
+                        <div class="text-lime-500 mb-4">
+                            <!-- Icône Map -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-8 h-8 mx-auto">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Marché Congolais</h3>
+                        <p class="text-gray-300 text-sm">Nous comprenons le marché congolais et ses spécificités uniques
+                            pour un impact local maximal.</p>
+                    </div>
+
+                    <!-- Avantage 2: Approche Personnalisée -->
+                    <div class="text-center p-6 bg-white bg-opacity-10 rounded-xl shadow-lg">
+                        <div class="text-lime-500 mb-4">
+                            <!-- Icône File Text -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-8 h-8 mx-auto">
+                                <path d="M4 13.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-5.5"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <path d="M10 18H5a2 2 0 0 0-2 2v2"></path>
+                                <path d="M7 18v6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Approche Sur Mesure</h3>
+                        <p class="text-gray-300 text-sm">Chaque projet est unique. Nous nous engageons à vous offrir des
+                            solutions personnalisées et adaptées.</p>
+                    </div>
+
+                    <!-- Avantage 3: Créativité & Innovation -->
+                    <div class="text-center p-6 bg-white bg-opacity-10 rounded-xl shadow-lg">
+                        <div class="text-lime-500 mb-4">
+                            <!-- Icône Zap -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-8 h-8 mx-auto">
+                                <path d="M14.5 10a2.5 2.5 0 0 0 0 5H16"></path>
+                                <path d="M18.5 12a2.5 2.5 0 0 0 0 5H20"></path>
+                                <path d="M8.5 8a2.5 2.5 0 0 0 0 5H10"></path>
+                                <path d="M4.5 6a2.5 2.5 0 0 0 0 5H6"></path>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Créativité Illimitée</h3>
+                        <p class="text-gray-300 text-sm">Notre équipe pense en dehors des sentiers battus pour garantir
+                            l'impact et la mémorabilité de vos campagnes.</p>
+                    </div>
+
+                    <!-- Avantage 4: Fiabilité & Rentabilité -->
+                    <div class="text-center p-6 bg-white bg-opacity-10 rounded-xl shadow-lg">
+                        <div class="text-lime-500 mb-4">
+                            <!-- Icône Download -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-8 h-8 mx-auto">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Chiffre d'Affaires</h3>
+                        <p class="text-gray-300 text-sm">La communication est la clé. Maîtrisez ses rouages pour doubler
+                            votre rentabilité et prendre de l'avance.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Notre Équipe -->
+        <section id="team"
+            class="py-16 sm:py-24 bg-gradient-to-br from-[#0c3a2d] to-[#041f18] relative overflow-hidden">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-lime-500/5 rounded-full blur-3xl pointer-events-none">
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <span class="text-lime-500 font-semibold uppercase tracking-wider">L'Équipe</span>
+                    <h2 class="text-4xl font-extrabold text-white mt-2">Rencontrez Nos Experts</h2>
+                    <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto">Une équipe passionnée dédiée à votre succès.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- Team Member 1 -->
+                    <div
+                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl overflow-hidden shadow-2xl hover:bg-white/20 transition duration-500 transform hover:-translate-y-2 group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="images/team_1.png" alt="Jean-Marc Kalonji"
+                                class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-white">Jean-Marc Kalonji</h3>
+                            <p class="text-lime-400 font-medium uppercase tracking-wide text-sm mt-1">Directeur Général
+                            </p>
+                            <p class="text-gray-300 mt-3 text-sm">Visionnaire stratégique avec plus de 15 ans
+                                d'expérience.</p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div
+                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl overflow-hidden shadow-2xl hover:bg-white/20 transition duration-500 transform hover:-translate-y-2 group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="images/team_2.png" alt="Sarah Mbuyi"
+                                class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-white">Sarah Mbuyi</h3>
+                            <p class="text-lime-400 font-medium uppercase tracking-wide text-sm mt-1">Directrice
+                                Création</p>
+                            <p class="text-gray-300 mt-3 text-sm">Transforme les concepts en visuels percutants et
+                                mémorables.</p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div
+                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl overflow-hidden shadow-2xl hover:bg-white/20 transition duration-500 transform hover:-translate-y-2 group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="images/team_3.png" alt="David Kabongo"
+                                class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-white">David Kabongo</h3>
+                            <p class="text-lime-400 font-medium uppercase tracking-wide text-sm mt-1">Responsable
+                                Marketing</p>
+                            <p class="text-gray-300 mt-3 text-sm">Expert en digital et stratégies innovantes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="about.html"
+                        class="inline-block bg-lime-500 text-[#0c3a2d] font-bold py-3 px-8 rounded-xl text-lg hover:bg-lime-400 transition duration-300 shadow-xl">
+                        Découvrir toute l'équipe
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Partenaires -->
+        <section id="partners" class="py-16 bg-[#0c3a2d] overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+                <span class="text-lime-500 font-semibold uppercase tracking-wider">Références</span>
+                <h2 class="text-3xl font-extrabold text-white mt-2">Ils nous font confiance</h2>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative w-full overflow-hidden py-8 bg-white shadow-lg rounded-2xl border border-gray-100">
+                    <div
+                        class="absolute top-0 left-0 w-32 h-full z-10 bg-gradient-to-r from-white to-transparent rounded-l-2xl">
+                    </div>
+                    <div
+                        class="absolute top-0 right-0 w-32 h-full z-10 bg-gradient-to-l from-white to-transparent rounded-r-2xl">
+                    </div>
+
+                    <div class="flex whitespace-nowrap animate-scroll w-max">
+                        <div class="flex space-x-16 mx-8 items-center">
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">TECHCORP</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">INNOVATE</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">GLOBALSOL</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">ECOGREEN</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">FUTUREBUILD</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">HEALTHPLUS</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">DATASYSTEMS</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">SMARTMEDIA</span>
+                        </div>
+                        <div class="flex space-x-16 mx-8 items-center">
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">TECHCORP</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">INNOVATE</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">GLOBALSOL</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">ECOGREEN</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">FUTUREBUILD</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">HEALTHPLUS</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">DATASYSTEMS</span>
+                            <span
+                                class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">SMARTMEDIA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section CTA Final -->
+        <section id="cta" class="py-20 sm:py-28 bg-gradient-to-r from-lime-500 to-lime-400">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-[#0c3a2d] mb-6">
+                    Prêt à transformer votre communication ?
+                </h2>
+                <p class="text-xl text-[#0c3a2d]/80 mb-10 max-w-2xl mx-auto">
+                    Contactez-nous dès aujourd'hui pour discuter de votre projet et découvrir comment nous pouvons vous
+                    aider à atteindre vos objectifs.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="contact.html"
+                        class="bg-[#0c3a2d] text-white font-bold py-4 px-10 rounded-xl text-lg hover:bg-[#0a2e24] transition duration-300 shadow-xl">
+                        Demander un Devis Gratuit
+                    </a>
+                    <a href="tel:+243822032633"
+                        class="bg-white text-[#0c3a2d] font-bold py-4 px-10 rounded-xl text-lg hover:bg-gray-100 transition duration-300 shadow-xl border-2 border-[#0c3a2d]">
+                        📞 +243 822 032 633
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Container for Projects -->
+    <div id="projectModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 backdrop-blur-sm">
+        <div class="flex min-h-screen items-center justify-center p-4">
+            <div class="bg-white rounded-2xl max-w-4xl w-full shadow-2xl transform transition-all">
+                <!-- Modal Header -->
+                <div class="bg-[#0c3a2d] text-white px-6 py-4 rounded-t-2xl flex justify-between items-center">
+                    <h2 id="modalTitle" class="text-2xl font-bold"></h2>
+                    <button onclick="closeModal()"
+                        class="text-white hover:text-lime-500 transition text-3xl font-bold">&times;</button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="p-8 max-h-[70vh] overflow-y-auto">
+                    <div id="modalContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0c3a2d] text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-2xl font-extrabold tracking-tight mb-4">
+                <span class="text-lime-500">hope</span>comms
+            </p>
+            <p class="text-sm text-gray-400">
+                &copy; 2025 HOPE COMMS. Tous droits réservés.
+            </p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <!-- Icône Facebook -->
+                <a href="#" class="text-gray-400 hover:text-lime-500 transition duration-150" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.77l-.44 2.891h-2.33v6.987C18.343 21.128 22 16.991 22 12z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript pour le menu mobile et le formulaire de contact -->
+    <script>
+        // Attendre que le DOM soit complètement chargé
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Logique du Menu Mobile ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+
+            function toggleMenu() {
+                // Basculer la classe 'hidden' sur le menu mobile
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('mobile-menu-open');
+
+                // Basculer les icônes (hamburger <-> croix)
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+            }
+
+            mobileMenuButton.addEventListener('click', toggleMenu);
+
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Fermer le menu après avoir cliqué sur un lien si le menu est ouvert
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMenu();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Script for Project Modal -->
+    <script>
+        // Project data with detailed information (for first 3 projects)
+        const projectData = {
+            project1: {
+                title: 'Campagne Digitale "Energy Drink"',
+                description: 'Lancement stratégique d\'une nouvelle boisson énergisante sur le marché dynamique de Kinshasa, en capitalisant sur l\'influence des créateurs de contenu locaux.',
+                objectives: [
+                    'Générer une notoriété de marque à 360°',
+                    'Atteindre 500 000 impressions en 3 mois',
+                    'Créer un buzz viral auprès des 18-35 ans',
+                    'Établir une présence forte sur les réseaux sociaux'
+                ],
+                solutions: [
+                    'Collaboration avec 15 influenceurs majeurs de Kinshasa',
+                    'Création de contenu vidéo viral et challenges TikTok',
+                    'Événements de lancement dans 5 lieux stratégiques',
+                    'Campagne publicitaire ciblée sur Facebook et Instagram'
+                ],
+                results: [
+                    '750 000+ impressions organiques',
+                    '+120% de croissance des ventes en 2 mois',
+                    '25 000 nouveaux abonnés sur les réseaux sociaux',
+                    'Taux d\'engagement de 8,5% (vs moyenne de 3%)'
+                ],
+                channels: ['Instagram', 'TikTok', 'Facebook', 'YouTube', 'Relations Presse']
+            },
+            project2: {
+                title: 'Branding Institutionnel',
+                description: 'Transformation complète de l\'identité visuelle d\'une ONG locale œuvrant pour le développement communautaire, visant à moderniser son image et renforcer sa crédibilité.',
+                objectives: [
+                    'Moderniser l\'image de marque de l\'ONG',
+                    'Créer une identité visuelle cohérente et mémorable',
+                    'Faciliter la reconnaissance institutionnelle',
+                    'Améliorer la perception auprès des bailleurs de fonds'
+                ],
+                solutions: [
+                    'Refonte complète du logo avec symbolique locale',
+                    'Création d\'une charte graphique détaillée (80 pages)',
+                    'Design de supports de communication (brochures, rapports)',
+                    'Formation de l\'équipe interne aux nouvelles normes visuelles'
+                ],
+                results: [
+                    'Identité visuelle cohérente déployée sur tous les supports',
+                    '+40% d\'augmentation des demandes de partenariat',
+                    'Reconnaissance de marque accrue auprès des stakeholders',
+                    'Prix du meilleur rebranding institutionnel 2024'
+                ],
+                channels: ['Design Graphique', 'Print', 'Digital', 'Formation Interne']
+            },
+            project3: {
+                title: 'Événement Tech Contest',
+                description: 'Organisation et couverture médiatique complète du plus grand hackathon technologique de Kinshasa, rassemblant 200 développeurs pendant 48 heures de compétition intense.',
+                objectives: [
+                    'Positionner Kinshasa comme hub tech en Afrique centrale',
+                    'Créer un événement de référence pour la communauté tech',
+                    'Générer une couverture médiatique nationale et internationale',
+                    'Faciliter le réseautage entre développeurs et investisseurs'
+                ],
+                solutions: [
+                    'Gestion complète de l\'événement (logistique, sponsors, jury)',
+                    'Stratégie de communication multi-canaux',
+                    'Couverture média en direct (livestream, réseaux sociaux)',
+                    'Relations presse avec médias tech internationaux',
+                    'Production de contenu vidéo professionnel'
+                ],
+                results: [
+                    '200 participants de 8 pays africains',
+                    '1,2M+ de vues sur les réseaux sociaux',
+                    'Couverture dans 15 médias nationaux et internationaux',
+                    '45 prototypes développés, 12 startups créées',
+                    '500 000$ levés par les équipes gagnantes'
+                ],
+                channels: ['Événementiel', 'Livestreaming', 'Relations Presse', 'Social Media', 'Vidéo Production']
+            }
+        };
+
+        // Modal functions
+        function openModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            const project = projectData[projectId];
+
+            if (!project) return;
+
+            // Set modal title
+            modalTitle.textContent = project.title;
+
+            // Build modal content
+            let contentHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-gray-700 text-lg leading-relaxed">${project.description}</p>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Objectifs
+                        </h3>
+                        <ul class="space-y-2">
+                            ${project.objectives.map(obj => `
+                                <li class="flex items-start">
+                                    <span class="text-lime-500 mr-2 mt-1">✓</span>
+                                    <span class="text-gray-700">${obj}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                            Solutions Mises en Œuvre
+                        </h3>
+                        <ul class="space-y-2">
+                            ${project.solutions.map(sol => `
+                                <li class="flex items-start">
+                                    <span class="text-lime-500 mr-2">→</span>
+                                    <span class="text-gray-700">${sol}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
+                            Résultats Obtenus
+                        </h3>
+                        <ul class="space-y-2">
+                            ${project.results.map(res => `
+                                <li class="flex items-start bg-lime-50 p-3 rounded-lg">
+                                    <span class="text-lime-600 mr-2 font-bold">★</span>
+                                    <span class="text-gray-800 font-medium">${res}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h3 class="text-xl font-bold text-[#0c3a2d] mb-4">Canaux & Technologies</h3>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.channels.map(channel => `
+                                <span class="bg-[#0c3a2d] text-white px-4 py-2 rounded-full text-sm font-medium">
+                                    ${channel}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-6 text-center">
+                        <a href="contact.html" class="inline-block bg-lime-500 text-[#0c3a2d] px-8 py-3 rounded-lg font-bold hover:bg-lime-400 transition shadow-lg">
+                            Discutons de votre projet
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            modalContent.innerHTML = contentHTML;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('projectModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+    <script src="js/unregister-sw.js"></script>
+    <script src="js/chatbot.js?v=3.0"></script>
+</body>
+
+</html>
