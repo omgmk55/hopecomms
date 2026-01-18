@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrollbar-color: #84cc16 rgba(0, 0, 0, 0.05);
             }
         </style>
-        <div id="hope-chatbot-container" class="fixed bottom-6 right-6 z-[9999] font-sans">
+        <div id="hope-chatbot-container" class="fixed bottom-4 right-4 z-[9999] font-sans flex flex-col items-end">
             <!-- Chat Window -->
-            <div id="chat-window" class="hidden flex flex-col w-[350px] h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transition-all duration-300 transform origin-bottom-right mb-4">
+            <div id="chat-window" class="hidden flex flex-col w-[90vw] sm:w-[350px] h-[80vh] sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transition-all duration-300 transform origin-bottom-right mb-4">
                 <!-- Header -->
                 <div class="bg-lime-500 p-4 flex justify-between items-center text-white flex-shrink-0">
                     <div class="flex items-center space-x-3">
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 
                 <!-- Messages Area with Scroll -->
-                <div id="chat-messages" class="p-4 overflow-y-auto bg-gradient-to-b from-gray-50 to-gray-100 space-y-3" style="height: 340px;">
+                <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-gradient-to-b from-gray-50 to-gray-100 space-y-3">
                     <!-- Messages will be injected here -->
                     <div class="flex justify-start animate-fadeIn">
                         <div class="bg-white border border-gray-200 text-gray-800 rounded-tr-xl rounded-br-xl rounded-bl-xl p-3 shadow-sm max-w-[80%] text-sm leading-relaxed">
