@@ -672,6 +672,11 @@
                 mobileMenu.classList.toggle('mobile-menu-open');
                 menuIconOpen.classList.toggle('hidden');
                 menuIconClose.classList.toggle('hidden');
+
+                // Fermer le chatbot si le menu est ouvert
+                if (!mobileMenu.classList.contains('hidden') && window.closeChatbot) {
+                    window.closeChatbot();
+                }
             }
             mobileMenuButton.addEventListener('click', toggleMenu);
         });

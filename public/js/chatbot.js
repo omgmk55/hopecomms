@@ -145,23 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const messagesContainer = document.getElementById('chat-messages');
 
-    // Load State
-    function loadState() {
-        const isOpen = sessionStorage.getItem(STATE_KEY) === 'open';
-        if (isOpen) {
-            chatWindow.classList.remove('hidden');
-        }
-
-        const savedMessages = sessionStorage.getItem(MESSAGES_KEY);
-        if (savedMessages) {
-            messagesContainer.innerHTML = savedMessages;
-        } else {
-            // Initial message is already in HTML, save it as starting state if empty
-            saveMessages();
-        }
-        scrollToBottom();
-    }
-
     // Save State
     function saveState(isOpen) {
         sessionStorage.setItem(STATE_KEY, isOpen ? 'open' : 'closed');
@@ -180,12 +163,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleChat() {
         chatWindow.classList.toggle('hidden');
         const isHidden = chatWindow.classList.contains('hidden');
-        saveState(!isHidden);
+        saveState(!isHidden); // Update state on user interaction
         if (!isHidden) { // If opening
             setTimeout(() => chatInput.focus(), 100);
             scrollToBottom();
         }
     }
+
+    // Explicitly expose close function for external use
+    window.closeChatbot = function () {
+        if (!chatWindow.classList.contains('hidden')) {
+            toggleChat();
+        }
+    };
 
     function addMessage(text, isUser = false) {
         const div = document.createElement('div');
@@ -225,6 +215,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 600);
     });
 
-    // Initialize
-    loadState();
+    // --- Initialization ---
+    // Do NOT automatically open based on previous state
+    // const isOpen = sessionStorage.getItem(STATE_KEY) === 'open'; // Ignored
+
+    // Restore messages logic
+    const savedMessages = sessionStorage.getItem(MESSAGES_KEY);
+    if (savedMessages) {
+        messagesContainer.innerHTML = savedMessages;
+    } else {
+        saveMessages();
+    }
+
+    // Always start closed visually (hidden class is there by default)
+    // If we wanted to enforce it: chatWindow.classList.add('hidden');
 });
