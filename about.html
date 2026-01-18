@@ -59,9 +59,70 @@
             animation: scroll 30s linear infinite;
         }
 
-        /* Pause on hover optionnel */
         .animate-scroll:hover {
             animation-play-state: paused;
+        }
+
+        /* Custom Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, #84cc16, transparent);
+            transform: translateX(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
         }
     </style>
 </head>
@@ -113,57 +174,6 @@
         </div>
     </header>
 
-    <style>
-        /* Custom Animations */
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            /* Star hidden */
-        }
-
-        .delay-100 {
-            animation-delay: 0.1s;
-        }
-
-        .delay-200 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-300 {
-            animation-delay: 0.3s;
-        }
-    </style>
-
     <main class="flex-grow">
         <!-- Page Header -->
         <section class="bg-[#0c3a2d] py-20 text-center relative overflow-hidden">
@@ -177,14 +187,11 @@
             </div>
         </section>
 
-        <!-- Section À Propos (Banner Design) -->
-        <section id="about" class="py-16 sm:py-24 bg-white">
+        <!-- Section Introduction avec Image (Seamless Design) -->
+        <section id="intro" class="py-16 sm:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Banner Container (Seamless Design) -->
                 <div
                     class="bg-[#0c3a2d] rounded-3xl overflow-hidden shadow-2xl relative min-h-[500px] flex items-center group">
-
-                    <!-- Background Curve SVG (Animated on Hover) -->
                     <div
                         class="absolute top-0 right-0 h-full w-2/3 hidden lg:block pointer-events-none transition-transform duration-1000 group-hover:scale-105">
                         <svg viewBox="0 0 100 100" preserveAspectRatio="none"
@@ -221,7 +228,6 @@
                         <!-- Right: Image (Seamless Blend) -->
                         <div
                             class="relative h-full min-h-[500px] flex items-end justify-center lg:justify-end overflow-visible">
-                            <!-- Image sitting on the card background -->
                             <img src="images/team_bg_removed.png"
                                 class="relative z-10 max-h-[110%] w-auto object-contain object-bottom lg:-mr-12 lg:-mb-12 animate-float"
                                 alt="Équipe Hope Comms">
@@ -231,600 +237,240 @@
             </div>
         </section>
 
-        <!-- Section Valeur Ajoutée (Ajoutée depuis Index) -->
-        <section id="why-us" class="py-16 sm:py-24 bg-[#0c3a2d] text-white">
+        <!-- Section Notre Histoire (Timeline) -->
+        <section class="py-16 sm:py-24 bg-gray-50 relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Notre Avantage
-                        Concurrentiel</span>
-                    <h2 class="text-4xl font-extrabold mt-2 mb-10">
-                        La Clé de la Réussite : La Communication
-                    </h2>
+                <div class="text-center mb-16">
+                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Notre Parcours</span>
+                    <h2 class="text-4xl font-extrabold text-[#0c3a2d] mt-2">L'Histoire de Hope Comms</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="relative py-10">
+                    <!-- Vertical Line -->
+                    <div class="timeline-line hidden md:block"></div>
 
-                    <!-- Avantage 1: Expertise Locale -->
-                    <div class="text-center p-6 bg-white bg-opacity-10 rounded-xl shadow-lg">
-                        <div class="text-lime-500 mb-4">
-                            <!-- Icône Map -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-8 h-8 mx-auto">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
+                    <div class="space-y-12">
+                        <!-- Event 1 -->
+                        <div class="relative flex flex-col md:flex-row items-center justify-center">
+                            <div class="md:w-1/2 md:pr-12 text-center md:text-right mb-4 md:mb-0">
+                                <h3 class="text-2xl font-bold text-[#0c3a2d]">Fondation</h3>
+                                <p class="text-gray-600 mt-2">Création de l'agence avec une vision claire :
+                                    révolutionner la communication en RDC.</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-lime-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center z-10 text-white font-bold">
+                                2010</div>
+                            <div class="md:w-1/2 md:pl-12"></div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Marché Congolais</h3>
-                        <p class="text-gray-300 text-sm">Nous comprenons le marché congolais et ses spécificités uniques
-                            pour un impact local maximal.</p>
-                    </div>
 
-                    <!-- Avantage 2: Approche Personnalisée -->
-                    <div class="text-center p-6 bg-white bg-opacity-10 rounded-xl shadow-lg">
-                        <div class="text-lime-500 mb-4">
-                            <!-- Icône File Text -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-8 h-8 mx-auto">
-                                <path d="M4 13.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-5.5"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <path d="M10 18H5a2 2 0 0 0-2 2v2"></path>
-                                <path d="M7 18v6"></path>
-                            </svg>
+                        <!-- Event 2 -->
+                        <div class="relative flex flex-col md:flex-row items-center justify-center">
+                            <div class="md:w-1/2 md:pr-12"></div>
+                            <div
+                                class="w-12 h-12 bg-[#0c3a2d] rounded-full border-4 border-white shadow-lg flex items-center justify-center z-10 text-white font-bold">
+                                2015</div>
+                            <div class="md:w-1/2 md:pl-12 text-center md:text-left mt-4 md:mt-0">
+                                <h3 class="text-2xl font-bold text-[#0c3a2d]">Expansion</h3>
+                                <p class="text-gray-600 mt-2">Ouverture de nouveaux bureaux et élargissement de l'offre
+                                    de services.</p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Approche Sur Mesure</h3>
-                        <p class="text-gray-300 text-sm">Chaque projet est unique. Nous nous engageons à vous offrir des
-                            solutions personnalisées et adaptées.</p>
-                    </div>
 
-                    <!-- Avantage 3: Créativité & Innovation -->
-                    <div class="text-center p-6 bg-white bg-opacity-10 rounded-xl shadow-lg">
-                        <div class="text-lime-500 mb-4">
-                            <!-- Icône Zap -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-8 h-8 mx-auto">
-                                <path d="M14.5 10a2.5 2.5 0 0 0 0 5H16"></path>
-                                <path d="M18.5 12a2.5 2.5 0 0 0 0 5H20"></path>
-                                <path d="M8.5 8a2.5 2.5 0 0 0 0 5H10"></path>
-                                <path d="M4.5 6a2.5 2.5 0 0 0 0 5H6"></path>
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
+                        <!-- Event 3 -->
+                        <div class="relative flex flex-col md:flex-row items-center justify-center">
+                            <div class="md:w-1/2 md:pr-12 text-center md:text-right mb-4 md:mb-0">
+                                <h3 class="text-2xl font-bold text-[#0c3a2d]">Innovation Digitale</h3>
+                                <p class="text-gray-600 mt-2">Intégration d'outils numériques avancés et de stratégies
+                                    social media performantes.</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-lime-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center z-10 text-white font-bold">
+                                2020</div>
+                            <div class="md:w-1/2 md:pl-12"></div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Créativité Illimitée</h3>
-                        <p class="text-gray-300 text-sm">Notre équipe pense en dehors des sentiers battus pour garantir
-                            l'impact et la mémorabilité de vos campagnes.</p>
-                    </div>
 
-                    <!-- Avantage 4: Fiabilité & Rentabilité -->
-                    <div class="text-center p-6 bg-white bg-opacity-10 rounded-xl shadow-lg">
-                        <div class="text-lime-500 mb-4">
-                            <!-- Icône Download -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-8 h-8 mx-auto">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
-                            </svg>
+                        <!-- Event 4 -->
+                        <div class="relative flex flex-col md:flex-row items-center justify-center">
+                            <div class="md:w-1/2 md:pr-12"></div>
+                            <div
+                                class="w-12 h-12 bg-[#0c3a2d] rounded-full border-4 border-white shadow-lg flex items-center justify-center z-10 text-white font-bold">
+                                2025</div>
+                            <div class="md:w-1/2 md:pl-12 text-center md:text-left mt-4 md:mt-0">
+                                <h3 class="text-2xl font-bold text-[#0c3a2d]">Leader du Marché</h3>
+                                <p class="text-gray-600 mt-2">Hope Comms s'impose comme la référence incontournable en
+                                    communication stratégique.</p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Chiffre d'Affaires</h3>
-                        <p class="text-gray-300 text-sm">La communication est la clé. Maîtrisez ses rouages pour doubler
-                            votre rentabilité et prendre de l'avance.</p>
                     </div>
-
                 </div>
             </div>
         </section>
-        </section>
 
-        <!-- Section Notre Mission (Glassmorphism Design) -->
+        <!-- Section Nos Valeurs et Missions (Consolidée) -->
         <section class="py-16 sm:py-24 bg-gradient-to-br from-[#0c3a2d] to-[#041f18] relative overflow-hidden">
-            <!-- Decorative Blobs for Glass Effect -->
-            <div
-                class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-lime-500/20 rounded-full blur-3xl pointer-events-none">
-            </div>
-            <div
-                class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-lime-500/10 rounded-full blur-3xl pointer-events-none">
-            </div>
+            <div class="absolute top-0 left-0 w-96 h-96 bg-lime-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-lime-500/5 rounded-full blur-3xl"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-16">
-                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Nos Objectifs</span>
-                    <h2 class="text-4xl font-extrabold text-white mt-2 uppercase">Notre Mission</h2>
+                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Notre ADN</span>
+                    <h2 class="text-4xl font-extrabold text-white mt-2">Valeurs & Missions</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Ce qui nous guide au quotidien pour assurer votre
+                        succès.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                    <!-- Mission 1 -->
+                    <!-- Value 1 -->
                     <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl hover:bg-white/20 transition duration-300 transform hover:-translate-y-2 group">
+                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl hover:bg-white/20 transition duration-300 group">
                         <div
                             class="bg-lime-500/20 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-lime-500 transition duration-300 border border-lime-500/30">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-8 w-8 text-lime-400 group-hover:text-white transition duration-300" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-4">Image & Valeurs</h3>
-                        <p class="text-gray-300 leading-relaxed group-hover:text-white transition duration-300">
-                            Améliorer l’image de votre institution dans sa globalité en mettant un accent sur son
-                            histoire et ses valeurs.
-                        </p>
-                    </div>
-
-                    <!-- Mission 2 -->
-                    <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl hover:bg-white/20 transition duration-300 transform hover:-translate-y-2 group">
-                        <div
-                            class="bg-lime-500/20 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-lime-500 transition duration-300 border border-lime-500/30">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-8 w-8 text-lime-400 group-hover:text-white transition duration-300" fill="none"
+                                class="h-8 w-8 text-lime-400 group-hover:text-white transition" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4">Impact Persuasif</h3>
-                        <p class="text-gray-300 leading-relaxed group-hover:text-white transition duration-300">
-                            Mettre à la disposition de votre entreprise des stimulus persuasifs face à leurs cibles pour
-                            la fiabilité et la rentabilité.
-                        </p>
+                        <h3 class="text-xl font-bold text-white mb-4">Impact</h3>
+                        <p class="text-gray-300">Créer des stimuli persuasifs pour maximiser la visibilité et la
+                            rentabilité de votre entreprise.</p>
                     </div>
 
-                    <!-- Mission 3 -->
+                    <!-- Value 2 -->
                     <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl hover:bg-white/20 transition duration-300 transform hover:-translate-y-2 group">
+                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl hover:bg-white/20 transition duration-300 group">
                         <div
                             class="bg-lime-500/20 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-lime-500 transition duration-300 border border-lime-500/30">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-8 w-8 text-lime-400 group-hover:text-white transition duration-300" fill="none"
+                                class="h-8 w-8 text-lime-400 group-hover:text-white transition" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-4">Croissance</h3>
-                        <p class="text-gray-300 leading-relaxed group-hover:text-white transition duration-300">
-                            Promouvoir la marque, le service et votre entreprise pour accroître son chiffre d’affaire de
-                            manière significative.
-                        </p>
+                        <p class="text-gray-300">Promouvoir votre marque pour accroître votre chiffre d'affaires de
+                            manière significative.</p>
                     </div>
 
-                    <!-- Mission 4 -->
+                    <!-- Value 3 -->
                     <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl hover:bg-white/20 transition duration-300 transform hover:-translate-y-2 group">
+                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl hover:bg-white/20 transition duration-300 group">
                         <div
                             class="bg-lime-500/20 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-lime-500 transition duration-300 border border-lime-500/30">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-8 w-8 text-lime-400 group-hover:text-white transition duration-300" fill="none"
+                                class="h-8 w-8 text-lime-400 group-hover:text-white transition" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4">Lien Social</h3>
-                        <p class="text-gray-300 leading-relaxed group-hover:text-white transition duration-300">
-                            Organiser des échanges publics entre votre entreprise et ses consommateurs pour maintenir et
-                            renforcer le lien social.
-                        </p>
+                        <h3 class="text-xl font-bold text-white mb-4">Proximité</h3>
+                        <p class="text-gray-300">Maintenir et renforcer le lien social entre votre entreprise et ses
+                            consommateurs.</p>
                     </div>
-
-                    <!-- Mission 5 -->
-                    <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl hover:bg-white/20 transition duration-300 transform hover:-translate-y-2 group">
-                        <div
-                            class="bg-lime-500/20 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-lime-500 transition duration-300 border border-lime-500/30">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-8 w-8 text-lime-400 group-hover:text-white transition duration-300" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-4">Lobbying & Marché</h3>
-                        <p class="text-gray-300 leading-relaxed group-hover:text-white transition duration-300">
-                            Soigner et entretenir le lobbying pour acquérir une position dominante et la main mise sur
-                            votre marché cible.
-                        </p>
-                    </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- Section Nos Services (Ajoutée depuis image) -->
+        <!-- Section Notre Équipe -->
         <section class="py-16 sm:py-24 bg-white">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="text-lime-500 font-semibold uppercase tracking-wider">Ce Que Nous Offrons</span>
-                    <h2 class="text-4xl font-extrabold text-[#0c3a2d] mt-2 uppercase">Nos Services</h2>
-                </div>
-
-                <div class="space-y-8">
-                    <!-- Service 1 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
-                                1
-                            </div>
-                        </div>
-                        <div class="ml-6">
-                            <h3 class="text-lg font-bold text-[#0c3a2d]">Publicité Institutionnelle</h3>
-                            <p class="mt-2 text-gray-600">Renforcez votre image et votre réputation avec des campagnes
-                                sur mesure qui reflètent vos valeurs.</p>
-                        </div>
-                    </div>
-
-                    <!-- Service 2 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
-                                2
-                            </div>
-                        </div>
-                        <div class="ml-6">
-                            <h3 class="text-lg font-bold text-[#0c3a2d]">Publicité de Marque</h3>
-                            <p class="mt-2 text-gray-600">Construisez une identité forte pour votre marque et engagez
-                                votre public à travers des messages authentiques.</p>
-                        </div>
-                    </div>
-
-                    <!-- Service 3 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
-                                3
-                            </div>
-                        </div>
-                        <div class="ml-6">
-                            <h3 class="text-lg font-bold text-[#0c3a2d]">Publicité de Produits</h3>
-                            <p class="mt-2 text-gray-600">Mettez en avant vos produits avec des campagnes innovantes qui
-                                captivent l'attention.</p>
-                        </div>
-                    </div>
-
-                    <!-- Service 4 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
-                                4
-                            </div>
-                        </div>
-                        <div class="ml-6">
-                            <h3 class="text-lg font-bold text-[#0c3a2d]">Publicité de Services</h3>
-                            <p class="mt-2 text-gray-600">Valorisez vos services grâce à une communication claire et
-                                impactante.</p>
-                        </div>
-                    </div>
-
-                    <!-- Service 5 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
-                                5
-                            </div>
-                        </div>
-                        <div class="ml-6">
-                            <h3 class="text-lg font-bold text-[#0c3a2d]">Marketing Digital</h3>
-                            <p class="mt-2 text-gray-600">Nous utilisons des outils très puissants pour créer une vraie
-                                communauté pour l'entreprise et être en interaction constante avec elle.</p>
-                        </div>
-                    </div>
-
-                    <!-- Service 6 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
-                                6
-                            </div>
-                        </div>
-                        <div class="ml-6">
-                            <h3 class="text-lg font-bold text-[#0c3a2d]">Organisation Panel, Exposition et Conférence
-                            </h3>
-                            <p class="mt-2 text-gray-600">Nous organisons le moyen le plus direct pour échanger et
-                                partager des idées.</p>
-                        </div>
-                    </div>
-
-                    <!-- Service 7 (Renumbered from 8) -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
-                                7
-                            </div>
-                        </div>
-                        <div class="ml-6">
-                            <h3 class="text-lg font-bold text-[#0c3a2d]">Rédaction et Publication Magazine Interne</h3>
-                            <p class="mt-2 text-gray-600">Nous produisons un magazine interne en format flyers pour
-                                rentrer plus en profondeur sur les enjeux de l'entreprise en fonction de l'actualité.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Service 8 (Renumbered from 9) -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-full bg-lime-500 text-white font-bold text-xl shadow-lg">
-                                8
-                            </div>
-                        </div>
-                        <div class="ml-6">
-                            <h3 class="text-lg font-bold text-[#0c3a2d]">Newsletter</h3>
-                            <p class="mt-2 text-gray-600">Rédaction de newsletter qui met en œuvre et permet d'engager
-                                ses destinataires sur la vision à long terme.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        </section>
-
-
-
-        <!-- Section Notre Équipe (Glassmorphism Design) -->
-        <section
-            class="py-16 sm:py-24 bg-gradient-to-br from-[#0c3a2d] to-[#041f18] relative overflow-hidden border-t border-white/10">
-            <!-- Decorative Blobs -->
-            <div
-                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-lime-500/5 rounded-full blur-3xl pointer-events-none">
-            </div>
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <span class="text-lime-500 font-semibold uppercase tracking-wider">L'Équipe</span>
-                    <h2 class="text-4xl font-extrabold text-white mt-2 uppercase">Rencontrez Nos Experts</h2>
-                    <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto">Une équipe passionnée et multidisciplinaire
+                    <h2 class="text-4xl font-extrabold text-[#0c3a2d] mt-2 uppercase">Rencontrez Nos Experts</h2>
+                    <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">Une équipe passionnée et multidisciplinaire
                         dédiée à votre succès.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
                     <!-- Team Member 1 -->
                     <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl overflow-hidden shadow-2xl hover:bg-white/20 transition duration-500 transform hover:-translate-y-2 group">
+                        class="group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300 bg-gray-50">
                         <div class="relative h-80 overflow-hidden">
                             <img src="images/team_1.png" alt="CEO"
-                                class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110">
+                                class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-[#0c3a2d] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end justify-center pb-6">
-                                <div
-                                    class="flex space-x-4 translate-y-4 group-hover:translate-y-0 transition duration-500 delay-100">
-                                    <!-- Social Icons -->
-                                    <a href="#"
-                                        class="text-white hover:text-lime-400 transition duration-300 bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/20"><svg
-                                            class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                        </svg></a>
-                                </div>
+                                class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0c3a2d] to-transparent p-6 translate-y-full group-hover:translate-y-0 transition duration-300">
+                                <p class="text-white text-sm">"L'excellence est notre standard."</p>
                             </div>
                         </div>
-                        <div class="p-8 text-center relative">
-                            <h3 class="text-2xl font-bold text-white">Jean-Marc Kalonji</h3>
-                            <p class="text-lime-400 font-medium uppercase tracking-wide text-sm mt-1">Directeur Général
-                            </p>
-                            <p class="text-gray-300 mt-4 text-sm leading-relaxed">Visionnaire stratégique avec plus de
-                                15 ans d'expérience dans la communication d'entreprise en RDC.</p>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-[#0c3a2d]">Jean-Marc Kalonji</h3>
+                            <p class="text-lime-600 font-medium text-sm mb-3">Directeur Général</p>
+                            <div class="w-12 h-1 bg-lime-500 mx-auto rounded-full"></div>
                         </div>
                     </div>
 
                     <!-- Team Member 2 -->
                     <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl overflow-hidden shadow-2xl hover:bg-white/20 transition duration-500 transform hover:-translate-y-2 group">
+                        class="group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300 bg-gray-50">
                         <div class="relative h-80 overflow-hidden">
                             <img src="images/team_2.png" alt="Creative Director"
-                                class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110">
+                                class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-[#0c3a2d] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end justify-center pb-6">
-                                <div
-                                    class="flex space-x-4 translate-y-4 group-hover:translate-y-0 transition duration-500 delay-100">
-                                    <a href="#"
-                                        class="text-white hover:text-lime-400 transition duration-300 bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/20"><svg
-                                            class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                        </svg></a>
-                                </div>
+                                class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0c3a2d] to-transparent p-6 translate-y-full group-hover:translate-y-0 transition duration-300">
+                                <p class="text-white text-sm">"La créativité sans limite."</p>
                             </div>
                         </div>
-                        <div class="p-8 text-center relative">
-                            <h3 class="text-2xl font-bold text-white">Sarah Mbuyi</h3>
-                            <p class="text-lime-400 font-medium uppercase tracking-wide text-sm mt-1">Directrice de
-                                Création</p>
-                            <p class="text-gray-300 mt-4 text-sm leading-relaxed">Artiste dans l'âme, elle transforme
-                                les concepts abstraits en visuels percutants et mémorables.</p>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-[#0c3a2d]">Sarah Mbuyi</h3>
+                            <p class="text-lime-600 font-medium text-sm mb-3">Directrice de Création</p>
+                            <div class="w-12 h-1 bg-lime-500 mx-auto rounded-full"></div>
                         </div>
                     </div>
 
                     <!-- Team Member 3 -->
                     <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl overflow-hidden shadow-2xl hover:bg-white/20 transition duration-500 transform hover:-translate-y-2 group">
+                        class="group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300 bg-gray-50">
                         <div class="relative h-80 overflow-hidden">
                             <img src="images/team_3.png" alt="Marketing Specialist"
-                                class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110">
+                                class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-[#0c3a2d] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end justify-center pb-6">
-                                <div
-                                    class="flex space-x-4 translate-y-4 group-hover:translate-y-0 transition duration-500 delay-100">
-                                    <a href="#"
-                                        class="text-white hover:text-lime-400 transition duration-300 bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/20"><svg
-                                            class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                        </svg></a>
-                                </div>
+                                class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0c3a2d] to-transparent p-6 translate-y-full group-hover:translate-y-0 transition duration-300">
+                                <p class="text-white text-sm">"Connecter les marques aux gens."</p>
                             </div>
                         </div>
-                        <div class="p-8 text-center relative">
-                            <h3 class="text-2xl font-bold text-white">David Kabongo</h3>
-                            <p class="text-lime-400 font-medium uppercase tracking-wide text-sm mt-1">Responsable
-                                Marketing</p>
-                            <p class="text-gray-300 mt-4 text-sm leading-relaxed">Expert en digital, il connecte votre
-                                marque à votre audience grâce à des stratégies innovantes.</p>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-[#0c3a2d]">David Kabongo</h3>
+                            <p class="text-lime-600 font-medium text-sm mb-3">Responsable Marketing</p>
+                            <div class="w-12 h-1 bg-lime-500 mx-auto rounded-full"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- Section Pourquoi Choisir Hope Comms (Modern Glassmorphism) -->
-        <section class="py-20 sm:py-28 bg-gradient-to-br from-[#0c3a2d] to-[#041f18] relative overflow-hidden">
-            <!-- Decorative blobs -->
-            <div class="absolute top-0 left-0 -ml-20 -mt-20 w-80 h-80 rounded-full bg-lime-500 opacity-10 blur-3xl">
-            </div>
-            <div class="absolute bottom-0 right-0 -mr-20 -mb-20 w-96 h-96 rounded-full bg-lime-500 opacity-10 blur-3xl">
-            </div>
-
+        <!-- Section Chiffres Clés (Stats) -->
+        <section class="py-20 bg-[#0c3a2d] relative overflow-hidden">
+            <div class="absolute inset-0 bg-lime-500/10 pattern-dots"></div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-6 uppercase tracking-tight">
-                        Pourquoi Choisir <span class="text-lime-500">Hope Comms ?</span>
-                    </h2>
-                    <div class="w-24 h-1 bg-lime-500 mx-auto rounded-full"></div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="p-6">
+                        <div class="text-5xl font-extrabold text-lime-500 mb-2">+15</div>
+                        <div class="text-white font-medium uppercase tracking-wide text-sm">Années d'Expérience</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-5xl font-extrabold text-lime-500 mb-2">+200</div>
+                        <div class="text-white font-medium uppercase tracking-wide text-sm">Projets Réalisés</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-5xl font-extrabold text-white mb-2">+50</div>
+                        <div class="text-lime-500 font-medium uppercase tracking-wide text-sm">Partenaires Fidèles</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-5xl font-extrabold text-white mb-2">100%</div>
+                        <div class="text-lime-500 font-medium uppercase tracking-wide text-sm">Satisfaction Client</div>
+                    </div>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                    <!-- Card 1 -->
-                    <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition duration-300 group">
-                        <div class="mb-6">
-                            <span
-                                class="inline-block p-4 rounded-xl bg-lime-500/20 text-lime-400 group-hover:bg-lime-500 group-hover:text-[#0c3a2d] transition duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Expertise Locale</h3>
-                        <p class="text-gray-300 leading-relaxed text-lg">
-                            Nous comprenons le marché congolais et ses spécificités.
-                        </p>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition duration-300 group transform md:-translate-y-4">
-                        <div class="mb-6">
-                            <span
-                                class="inline-block p-4 rounded-xl bg-lime-500/20 text-lime-400 group-hover:bg-lime-500 group-hover:text-[#0c3a2d] transition duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                                </svg>
-                            </span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Approche Personnalisée</h3>
-                        <p class="text-gray-300 leading-relaxed text-lg">
-                            Chaque projet est unique, et nous nous engageons à vous offrir des solutions sur mesure.
-                        </p>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition duration-300 group">
-                        <div class="mb-6">
-                            <span
-                                class="inline-block p-4 rounded-xl bg-lime-500/20 text-lime-400 group-hover:bg-lime-500 group-hover:text-[#0c3a2d] transition duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Créativité & Innovation</h3>
-                        <p class="text-gray-300 leading-relaxed text-lg">
-                            Notre équipe se démarque par sa capacité à penser en dehors des sentiers battus.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
             </div>
         </section>
-    </main>
 
-    <!-- Section Partenaires (Défilement Infini) -->
-    <section class="py-16 bg-[#0c3a2d] overflow-hidden border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
-            <span class="text-lime-500 font-semibold uppercase tracking-wider">Références</span>
-            <h2 class="text-3xl font-extrabold text-white mt-2">Ils nous font confiance</h2>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative w-full overflow-hidden py-8 bg-white shadow-lg rounded-2xl border border-gray-100">
-                <!-- Masques de dégradé pour effet de fondu sur les bords (arrondis) -->
-                <div
-                    class="absolute top-0 left-0 w-32 h-full z-10 bg-gradient-to-r from-white to-transparent rounded-l-2xl">
-                </div>
-                <div
-                    class="absolute top-0 right-0 w-32 h-full z-10 bg-gradient-to-l from-white to-transparent rounded-r-2xl">
-                </div>
-
-                <div class="flex whitespace-nowrap animate-scroll w-max">
-                    <!-- Groupe de Logos Original -->
-                    <div class="flex space-x-16 mx-8 items-center">
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">TECHCORP</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">INNOVATE</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">GLOBALSOL</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">ECOGREEN</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">FUTUREBUILD</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">HEALTHPLUS</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">DATASYSTEMS</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">SMARTMEDIA</span>
-                    </div>
-
-                    <!-- Groupe de Logos Dupliqué (Pour la boucle) -->
-                    <div class="flex space-x-16 mx-8 items-center">
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">TECHCORP</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">INNOVATE</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">GLOBALSOL</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">ECOGREEN</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">FUTUREBUILD</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">HEALTHPLUS</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">DATASYSTEMS</span>
-                        <span
-                            class="text-2xl font-bold text-gray-300 hover:text-lime-500 transition cursor-pointer">SMARTMEDIA</span>
-                    </div>
-                </div>
-            </div>
-    </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#0c3a2d] text-white py-10 mt-auto">
+    <footer class="bg-[#0c3a2d] text-white py-10 mt-auto border-t border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-2xl font-extrabold tracking-tight mb-4"><span class="text-lime-500">hope</span>comms</p>
             <p class="text-sm text-gray-400">&copy; 2025 HOPE COMMS. Tous droits réservés.</p>
