@@ -819,12 +819,12 @@ video {
   height: 24rem;
 }
 
-.h-\[800px\] {
-  height: 800px;
+.h-\[450px\] {
+  height: 450px;
 }
 
-.h-\[80vh\] {
-  height: 80vh;
+.h-\[800px\] {
+  height: 800px;
 }
 
 .h-full {

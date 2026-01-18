@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </style>
         <div id="hope-chatbot-container" class="fixed bottom-4 right-4 z-[9999] font-sans flex flex-col items-end">
             <!-- Chat Window -->
-            <div id="chat-window" class="hidden flex flex-col w-[90vw] sm:w-[350px] h-[80vh] sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transition-all duration-300 transform origin-bottom-right mb-4">
+            <div id="chat-window" class="hidden flex flex-col w-[90vw] sm:w-[350px] h-[450px] sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transition-all duration-300 transform origin-bottom-right mb-4">
                 <!-- Header -->
                 <div class="bg-lime-500 p-4 flex justify-between items-center text-white flex-shrink-0">
                     <div class="flex items-center space-x-3">
